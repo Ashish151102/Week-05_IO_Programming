@@ -6,7 +6,7 @@ import java.util.List;
 public class DatabaseFetcher {
 
     public List<String[]> fetchEmployeeRecords(String dbUrl, String username, String password) {
-        String query = "SELECT employee_id, name, department, salary FROM employees";  // Adjust your query
+        String query = "SELECT EmployeeID, Name, Department, Salary FROM Employee";  // Adjust your query
         List<String[]> records = new ArrayList<>();
 
         try (Connection connection = DriverManager.getConnection(dbUrl, username, password);
@@ -15,10 +15,10 @@ public class DatabaseFetcher {
 
             while (resultSet.next()) {
                 String[] record = {
-                        String.valueOf(resultSet.getInt("employee_id")),
-                        resultSet.getString("name"),
-                        resultSet.getString("department"),
-                        String.valueOf(resultSet.getDouble("salary"))
+                        String.valueOf(resultSet.getInt("EmployeeId")),
+                        resultSet.getString("Name"),
+                        resultSet.getString("Department"),
+                        String.valueOf(resultSet.getDouble("Salary"))
                 };
                 records.add(record);
             }
